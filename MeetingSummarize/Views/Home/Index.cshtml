@@ -4,5 +4,17 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>
+        <a class="btn btn-primary" href="@Url.Action("Create","Meeting")">Create Meeting</a>
+    </p>
+    <div class="mt-3" style="max-width:420px; margin:0 auto;">
+        <form method="get" action="@Url.Action("Join","Meeting")" class="row g-2">
+            <div class="col-9">
+                <input name="id" class="form-control" placeholder="Meeting Id (GUID)" />
+            </div>
+            <div class="col-3">
+                <button type="submit" class="btn btn-success w-100">Join</button>
+            </div>
+        </form>
+    </div>
 </div>

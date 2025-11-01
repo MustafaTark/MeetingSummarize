@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "Join Meeting";
+    var meetingId = (string)ViewBag.MeetingId;
+    var title = (string)ViewBag.Title;
+}
+<h2>@title</h2>
+<div class="row">
+    <div class="col-md-9">
+        <video id="localVideo" autoplay playsinline muted style="width:100%; background:#000;"></video>
+        <video id="remoteVideo" autoplay playsinline style="width:100%; background:#000; margin-top:8px;"></video>
+        <div class="mt-2">
+            <button id="startBtn" class="btn btn-success">Start</button>
+            <form id="endForm" method="post" action="@Url.Action("End","Meeting", new { id = meetingId })" style="display:inline-block">
+                <button type="submit" class="btn btn-danger">End Meeting</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div id="chat" style="height:360px; overflow:auto; border:1px solid #ddd; padding:6px;"></div>
+        <div class="input-group mt-2">
+            <input id="chatInput" class="form-control" placeholder="Message" />
+            <button id="chatSend" class="btn btn-primary">Send</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
+<script src="/js/meeting.js"></script>
+<script>
+    window.__meetingId = '@meetingId';
+</script>
+
+
